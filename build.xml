@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="default" name="SMCCSBuild_project">
 <target name="default">
-  <loadresource property="myProp">
-       <file file="manifest.yml"/>
-    </loadresource>
-    <echo>${myProp}</echo>
+  <property environment="my_env" />
+  <echo>
+      ${my_env.CF_APP}
+   </echo>
 </target>
 </project>
