@@ -1,6 +1,6 @@
 ---
 declared-services:
-  Predictive Analytics-im:
+  @pa_service_instance_name@:
     label: pm-20
     plan: 'Free'
     
@@ -11,5 +11,5 @@ applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/
   path: ./app/ #Path to the application to be pushed
   command: node app.js #The command to use to start the application
   services:
-  - Predictive Analytics-im #Identifier for MySQL Bound Service instance
+  - @pa_service_instance_name@ #Identifier for MySQL Bound Service instance
 
