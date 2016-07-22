@@ -14,7 +14,7 @@ stages:
     script: |-
       #!/bin/bash
       serviceName=`sed -n '/- name/p' manifest.yml | cut -d ':' -f2 | sed 's/[[:space:]]//g'`
-      sed -i "s/@pa_service_instance_name@/$CF_APP/g" manifest.yml
+      sed -i "s/@pa_service_instance_name@/${CF_APP}/g" manifest.yml
 - name: Deploy Stage
   inputs:
   - type: job
