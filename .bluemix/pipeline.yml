@@ -27,8 +27,8 @@ stages:
       application: bluemix-node-mysql-uploader-brutkowski-153
     script: |-
       #!/bin/bash
-	    ls -l
-	    echo "${CF_APP}" 
+      ls -l
+      echo "${CF_APP}" 
       sed -i "s/@pa_service_instance_name@/\"${CF_APP}\"/g" manifest.yml
       cf push "${CF_APP}"
       # View logs
