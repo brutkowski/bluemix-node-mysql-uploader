@@ -1,8 +1,8 @@
 ---
 declared-services:
-  mysql-database:
-    label: mysql
-    plan: '100'
+  Predictive Analytics-im:
+    label: pm-20
+    plan: 'Free'
     
 applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/manifest.html
 - name: NodeMySQLUpload #Application Name. Unique to the user's Space
@@ -11,5 +11,5 @@ applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/
   path: ./app/ #Path to the application to be pushed
   command: node app.js #The command to use to start the application
   services:
-  - mysql-database #Identifier for MySQL Bound Service instance
+  - Predictive Analytics-im #Identifier for MySQL Bound Service instance
 
