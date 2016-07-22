@@ -27,7 +27,7 @@ stages:
       application: bluemix-node-mysql-uploader-brutkowski-153
     script: |-
       #!/bin/bash
-      serviceName=`echo ${CF_APP} | cut -d ':' -f2`
+      serviceName=`echo ${CF_APP} | cut -d '-' -f2`
       echo serviceName "${serviceName}" 
       sed -i "s/@pa_service_instance_name@/\"${serviceName}\"/g" manifest.yml
       cf push "${CF_APP}"
