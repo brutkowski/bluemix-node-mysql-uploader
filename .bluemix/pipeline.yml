@@ -22,14 +22,15 @@ stages:
     type: deployer
     target:
       region_id: ibm:yp:us-south
-      organization: blazej.rutkowski@pl.ibm.com
-      space: dev
-      application: bluemix-node-mysql-uploader-brutkowski-153
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+      application: ${CF_APP}
     script: |-
       #!/bin/bash
       serviceName=`echo ${CF_APP} | cut -d '-' -f2`
       echo serviceName "${serviceName}" 
-      sed -i "s/@pa_service_instance_name@/\"${serviceName}\"/g" manifest.yml
+      sed -i "s/@pa_service_instance_name@/${serviceName}/g" manifest.yml
       cat manifest.yml
       cf push "${CF_APP}"
       # View logs
