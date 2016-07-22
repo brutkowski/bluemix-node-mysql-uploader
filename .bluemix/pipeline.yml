@@ -13,10 +13,7 @@ stages:
     build_type: ant
     script: |-
       #!/bin/bash
-      serviceName=`sed -n '/- name/p' manifest.yml | cut -d ':' -f2 | sed 's/[[:space:]]//g'`
       echo "blazej"
-      echo "${CF_APP}"
-      sed -i "s/@pa_service_instance_name@/\"${CF_APP}\"/g" manifest.yml
 - name: Deploy Stage
   inputs:
   - type: job
@@ -34,6 +31,8 @@ stages:
       application: bluemix-node-mysql-uploader-brutkowski-153
     script: |-
       #!/bin/bash
+      echo "blazej2"
+      echo "${CF_APP}"
       cf push "${CF_APP}"
 
       # View logs
