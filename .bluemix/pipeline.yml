@@ -1,0 +1,37 @@
+---
+stages:
+- name: Build Stage
+  inputs:
+  - type: git
+    branch: master
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+    artifact_dir: ''
+    build_type: ant
+    script: |-
+      #!/bin/bash
+      ant
+- name: Deploy Stage
+  inputs:
+  - type: job
+    stage: Build Stage
+    job: Build
+  triggers:
+  - type: stage
+  jobs:
+  - name: Deploy to dev
+    type: deployer
+    target:
+      region_id: ibm:yp:us-south
+      organization: blazej.rutkowski@pl.ibm.com
+      space: dev
+      application: bluemix-node-mysql-uploader-brutkowski-153
+    script: |-
+      #!/bin/bash
+      cf push "${CF_APP}"
+
+      # View logs
+      #cf logs "${CF_APP}" --recent
