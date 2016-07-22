@@ -30,6 +30,7 @@ stages:
       serviceName=`echo ${CF_APP} | cut -d '-' -f2`
       echo serviceName "${serviceName}" 
       sed -i "s/@pa_service_instance_name@/\"${serviceName}\"/g" manifest.yml
+      cat manifest.yml
       cf push "${CF_APP}"
       # View logs
       #cf logs "${CF_APP}" --recent
