@@ -13,7 +13,8 @@ stages:
     build_type: ant
     script: |-
       #!/bin/bash
-      ant
+      serviceName=`sed -n '/- name/p' manifest.yml | cut -d ':' -f2 | sed 's/[[:space:]]//g'`
+      sed -i "s/@pa_service_instance_name@/$serviceName/g" manifest.yml
 - name: Deploy Stage
   inputs:
   - type: job
