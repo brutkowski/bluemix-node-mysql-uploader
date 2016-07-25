@@ -1,6 +1,6 @@
 ---
 declared-services:
-  blazej:
+  @pa_service_instance_name@:
     label: pm-20
     plan: 'Free'
     
@@ -11,5 +11,5 @@ applications:
   path: ./app/
   command: node app.js
   services:
-  - blazej
+  - @pa_service_instance_name@
 
