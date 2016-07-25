@@ -1,6 +1,6 @@
 ---
 declared-services:
-  @pa_service_instance_name@:
+  my service:
     label: pm-20
     plan: 'Free'
     
@@ -11,4 +11,4 @@ applications:
   path: ./app/
   command: node app.js
   services:
-  - @pa_service_instance_name@
+  - my service
