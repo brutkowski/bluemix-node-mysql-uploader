@@ -30,8 +30,8 @@ stages:
       #!/bin/bash
       echo appName "${CF_APP}"
       serviceNameBeforeDecoding=`echo ${CF_APP} | awk '{print substr($0, 11)}'`
-      echo serviceNameBeforeDencoding "${serviceNameBeforeDecoding}"
-      serviceNameAfterDecoding=$(printf '%b' "${serviceNameBeforeDencoding//-/\\x}")
+      echo serviceNameBeforeDecoding "${serviceNameBeforeDecoding}"
+      serviceNameAfterDecoding=$(printf '%b' "${serviceNameBeforeDecoding//-/\\x}")
       echo serviceNameAfterDecoding "${serviceNameAfterDecoding}"
       sed -i "s/@pa_service_instance_name@/${serviceNameAfterDecoding}/g" manifest.yml
       cat manifest.yml
