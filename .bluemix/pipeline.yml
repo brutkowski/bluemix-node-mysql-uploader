@@ -29,7 +29,7 @@ stages:
     script: |-
       #!/bin/bash
       echo appName "${CF_APP}"
-      serviceNameBeforeDecoding=`echo ${CF_APP} | awk '{print substr($0, 11)}'`
+      serviceNameBeforeDecoding=`echo ${CF_APP} | awk '{print substr($0, 12)}'`
       echo serviceNameBeforeDecoding "${serviceNameBeforeDecoding}"
       serviceNameAfterDecoding=$(printf '%b' "${serviceNameBeforeDecoding//-/\\x}")
       echo serviceNameAfterDecoding "${serviceNameAfterDecoding}"
