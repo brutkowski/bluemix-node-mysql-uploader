@@ -33,7 +33,7 @@ stages:
       echo serviceNameBeforeDecoding "${serviceNameBeforeDecoding}"
       serviceNameAfterDecoding=$(printf '%b' "${serviceNameBeforeDecoding//-/\\x}")
       echo serviceNameAfterDecoding "${serviceNameAfterDecoding}"
-      sed -i "s/@pa_service_instance_name@/${serviceName}/g" manifest.yml
+      sed -i "s/@pa_service_instance_name@/${serviceNameAfterDecoding}/g" manifest.yml
       cat manifest.yml
       cf push "${CF_APP}"
       # View logs
