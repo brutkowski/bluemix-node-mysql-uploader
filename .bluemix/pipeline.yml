@@ -32,7 +32,7 @@ stages:
       echo appName "${CF_APP}"
       serviceId=`echo ${CF_APP} | awk '{print substr($0, 12)}'`
       echo serviceId "${serviceId}"
-      serviceJson=`cf curl /v2/service_instances/bb3cb4e3-2961-4614-9593-a67ff58319a8`
+      serviceJson=`cf curl /v2/service_instances/${serviceId}`
       echo serviceJson "${serviceJson}"
       serviceName=`echo ${serviceJson} | grep -Po '"name":.*?[^\\]"' | cut -d":" -f2 | cut -d"\"" -f2`
       echo serviceName "${serviceName}"
