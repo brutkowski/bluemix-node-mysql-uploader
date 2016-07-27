@@ -34,7 +34,7 @@ stages:
       echo serviceId "${serviceId}"
       serviceJson=`cf curl /v2/service_instances/${serviceId}`
       echo serviceJson "${serviceJson}"
-      serviceName=$(echo ${serviceJson} | grep -Po '"name":.*?[^\\]"' | cut -d":" -f2 | cut -d"\"" -f2)
+      serviceName=`echo ${serviceJson} | grep -Po '(?<="name": ")[^"]*'`
       echo serviceName "${serviceName}"
       sed -i "s/@pa_service_instance_name@/${serviceName}/g" manifest.yml
       cat manifest.yml
