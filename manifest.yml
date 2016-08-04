@@ -1,9 +1,4 @@
 ---
-declared-services:
-  @pa_service_instance_name@:
-    label: pm-20
-    plan: 'Free'
-    
 applications:
 - name: NodeMySQLUpload
   memory: 256M
