@@ -27,6 +27,7 @@ stages:
       space: ${CF_SPACE}
       application: ${CF_APP}
     script: |-
+      try to break pipeline
       #!/bin/bash
       echo `cf target`
       echo appName "${CF_APP}"
